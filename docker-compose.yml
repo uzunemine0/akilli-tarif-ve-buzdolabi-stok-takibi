@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:15
+    container_name: buzdolabi_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: buzdolabi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  sonarqube:
+    image: sonarqube:community
+    container_name: buzdolabi_sonar
+    ports:
+      - "9000:9000"
+
+volumes:
+  postgres_data:
+  
