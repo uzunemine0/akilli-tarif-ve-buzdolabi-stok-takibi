@@ -9,14 +9,14 @@ class FridgeItem(Base):
     __tablename__ = "fridge_items"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False, index=True)          # Örn: "Süt", "Tavuk Göğsü"
-    category = Column(String, nullable=False)                  # Örn: "Süt Ürünleri", "Et/Tavuk"
-    quantity = Column(Float, nullable=False)                   # Örn: 1.0, 500.0
-    unit = Column(String, nullable=False)                      # Örn: "litre", "gram", "adet"
-    price_tl = Column(Float, nullable=False, default=0.0)      # Tasarruf analitiği için TL fiyatı
-    expiration_date = Column(Date, nullable=False)             # Son kullanma tarihi (SKT)
-    is_consumed = Column(Boolean, default=False)               # Tüketildi mi?
-    is_wasted = Column(Boolean, default=False)                 # İsraf mı oldu?
+    name = Column(String, nullable=False, index=True)          
+    category = Column(String, nullable=False)                  
+    quantity = Column(Float, nullable=False)                   
+    unit = Column(String, nullable=False)                      
+    price_tl = Column(Float, nullable=False, default=0.0)      
+    expiration_date = Column(Date, nullable=False)             
+    is_consumed = Column(Boolean, default=False)               
+    is_wasted = Column(Boolean, default=False)                 
     created_at = Column(DateTime, default=datetime.utcnow)
 
 
@@ -24,10 +24,10 @@ class Recipe(Base):
     __tablename__ = "recipes"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, nullable=False)                     # Örn: "Yoğurtlu Tavuk"
-    prep_time_minutes = Column(Integer, nullable=False)        # Hazırlama süresi (H bileşeni)
-    diet_tag = Column(String, nullable=True)                   # Örn: "Yüksek Protein", "Vejetaryen"
-    instructions = Column(String, nullable=False)              # Tarifin yapılışı
+    title = Column(String, nullable=False)                     
+    prep_time_minutes = Column(Integer, nullable=False)        
+    diet_tag = Column(String, nullable=True)                   
+    instructions = Column(String, nullable=False)            
 
     ingredients = relationship("RecipeIngredient", back_populates="recipe", cascade="all, delete-orphan")
 
@@ -49,8 +49,8 @@ class SavingsLog(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     recipe_title = Column(String, nullable=False)
-    saved_items_count = Column(Integer, nullable=False)        # İsraftan kurtarılan ürün sayısı
-    saved_amount_tl = Column(Float, nullable=False)            # Kurtarılan TL tutarı
+    saved_items_count = Column(Integer, nullable=False)        
+    saved_amount_tl = Column(Float, nullable=False)            
     logged_at = Column(DateTime, default=datetime.utcnow)
 
     
